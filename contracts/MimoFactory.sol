@@ -32,19 +32,6 @@ contract MimoFactory {
         return address(exchange);
     }
 
-    // Only used by the first liquidity provider for each token
-    function createExchangeWithLiquidity(
-          address token,
-          uint256 min_liquidity,
-          uint256 max_tokens,
-          uint256 deadline
-        ) public payable returns (address, uint256) {
-        address exchange_addr = createExchange(token);
-        uint256 liquidity_minted =
-          IMimoExchange(address(uint160(exchange_addr))).addLiquidity(min_liquidity, max_tokens, deadline);
-        return (exchange_addr, liquidity_minted);
-  }
-
     /***********************************|
   |         Getter Functions          |
   |__________________________________*/

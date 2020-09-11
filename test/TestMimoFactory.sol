@@ -31,4 +31,26 @@ contract TestMimoFactory {
     Assert.equal(factory.getTokenWithId(1), address(abctoken), "getTokenWithId returns wrong");
   }
 
+  function testCreateAnotherExchange() public {
+    MimoFactory factory = MimoFactory(DeployedAddresses.MimoFactory());
+    StandardToken xyztoken = new StandardToken("XYZ Token", "XYZ");
+
+    address xyzexchange = factory.createExchange(address(xyztoken));
+    address payable pxyzexchange = address(uint160(xyzexchange));
+    MimoExchange mimoex = MimoExchange(pxyzexchange);
+    Assert.equal(mimoex.factoryAddress(), DeployedAddresses.MimoFactory(), "exchange address wrong");
+
+    Assert.equal(factory.getExchange(address(xyztoken)), xyzexchange, "getExchange returns wrong");
+    Assert.equal(factory.getToken(xyzexchange), address(xyztoken), "getToken returns wrong");
+    Assert.equal(factory.getTokenWithId(2), address(xyztoken), "getTokenWithId returns wrong");
+  }
+
+  function testCreateYetAnotherExchange() public {
+    MimoFactory factory = MimoFactory(DeployedAddresses.MimoFactory());
+    StandardToken ttttoken = new StandardToken("TTT Token", "TTT");
+
+    (bool success,) = address(factory).call(abi.encodeWithSignature("createExchange(address)", address(ttttoken)));
+    require(success);
+    Assert.equal(factory.getTokenWithId(3), address(ttttoken), "getTokenWithId returns wrong");
+  }
 }
