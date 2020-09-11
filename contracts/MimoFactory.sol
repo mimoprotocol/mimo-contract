@@ -9,7 +9,6 @@ contract MimoFactory {
   |__________________________________*/
     event NewExchange(address indexed token, address indexed exchange);
 
-    address public exchangeTemplate;
     uint256 public tokenCount;
     mapping(address => address) internal token_to_exchange;
     mapping(address => address) internal exchange_to_token;
@@ -19,15 +18,8 @@ contract MimoFactory {
   |         Factory Functions         |
   |__________________________________*/
 
-    function initializeFactory(address template) public {
-        require(exchangeTemplate == address(0));
-        require(template != address(0));
-        exchangeTemplate = template;
-    }
-
     function createExchange(address token) public returns (address) {
         require(token != address(0));
-        require(exchangeTemplate != address(0));
         require(token_to_exchange[token] == address(0));
         MimoExchange exchange = new MimoExchange();
         exchange.setup(token);
@@ -39,6 +31,19 @@ contract MimoFactory {
         emit NewExchange(token, address(exchange));
         return address(exchange);
     }
+
+    // Only used by the first liquidity provider for each token
+    function createExchangeWithLiquidity(
+          address token,
+          uint256 min_liquidity,
+          uint256 max_tokens,
+          uint256 deadline
+        ) public payable returns (address, uint256) {
+        address exchange_addr = createExchange(token);
+        uint256 liquidity_minted =
+          IMimoExchange(address(uint160(exchange_addr))).addLiquidity(min_liquidity, max_tokens, deadline);
+        return (exchange_addr, liquidity_minted);
+  }
 
     /***********************************|
   |         Getter Functions          |
