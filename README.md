@@ -1,4 +1,4 @@
-![all tests](https://github.com/mimoexchange/mimo-contract/workflows/all%20tests/badge.svg)
+[![all tests](https://github.com/mimoexchange/mimo-contract/workflows/all%20tests/badge.svg)](https://github.com/mimoexchange/mimo-contract/actions?query=workflow%3A%22all+tests%22)
 
 # mimo-contract
 
