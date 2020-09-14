@@ -13,8 +13,8 @@ contract TestMimoExchange {
     MimoExchange exchange = MimoExchange(DeployedAddresses.MimoExchange());
     StandardToken abctoken = new StandardToken("ABC Token", "ABC");
     exchange.setup(address(abctoken));
-    Assert.equal(exchange.name(), "mimo", "exchange name wrong");
-    Assert.equal(exchange.symbol(), "MIM", "exchange symbol wrong");
+    Assert.equal(exchange.name(), "Mimo LP Token: ABC IOTX", "exchange name wrong");
+    Assert.equal(exchange.symbol(), "MLP:ABC_IOTX", "exchange symbol wrong");
     Assert.equal(exchange.decimals(), 18, "exchange decimals wrong");
   }
 

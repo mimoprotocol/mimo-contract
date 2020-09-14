@@ -10,8 +10,8 @@ contract MimoExchange is ERC20 {
   |__________________________________*/
 
     // Variables
-    bytes32 public name; // mimo
-    bytes32 public symbol; // MIM
+    string public name; // name of the exchange
+    string public symbol; // symbol of the exchange
     uint256 public decimals; // 18
     IERC20 token; // address of the ERC20 token traded on this contract
     IMimoFactory factory; // interface for the factory that created this contract
@@ -55,8 +55,8 @@ contract MimoExchange is ERC20 {
         );
         factory = IMimoFactory(msg.sender);
         token = IERC20(token_addr);
-        name = 0x6d696d6f00000000000000000000000000000000000000000000000000000000;
-        symbol = 0x4d494d0000000000000000000000000000000000000000000000000000000000;
+        name = string(abi.encodePacked("Mimo LP Token: ", token.symbol(), " IOTX"));
+        symbol = string(abi.encodePacked("MLP:", token.symbol(), "_IOTX"));
         decimals = 18;
     }
 
