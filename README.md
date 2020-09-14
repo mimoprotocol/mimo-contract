@@ -1,3 +1,5 @@
+![all tests](https://github.com/mimoexchange/mimo-contract/workflows/all%20tests/badge.svg)
+
 # mimo-contract
 
 🎛 Core smart contracts of mimo
