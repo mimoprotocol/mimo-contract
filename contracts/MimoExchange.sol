@@ -55,8 +55,8 @@ contract MimoExchange is ERC20 {
         );
         factory = IMimoFactory(msg.sender);
         token = IERC20(token_addr);
-        name = string(abi.encodePacked("IOTX ", token.symbol(), " LP"));
-        symbol = string(abi.encodePacked("LP:I", bytes(token.symbol())[0]));
+        name = string(abi.encodePacked("Mimo LP Token: ", token.symbol(), " IOTX"));
+        symbol = string(abi.encodePacked("MLP:", token.symbol(), "_IOTX"));
         decimals = 18;
     }
 
