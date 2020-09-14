@@ -10,8 +10,8 @@ contract MimoExchange is ERC20 {
   |__________________________________*/
 
     // Variables
-    string public name; // mimo
-    string public symbol; // MIM
+    string public name; // name of the exchange
+    string public symbol; // symbol of the exchange
     uint256 public decimals; // 18
     IERC20 token; // address of the ERC20 token traded on this contract
     IMimoFactory factory; // interface for the factory that created this contract
