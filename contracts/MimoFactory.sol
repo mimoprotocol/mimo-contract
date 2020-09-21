@@ -5,8 +5,8 @@ import "./IMimoExchange.sol";
 
 contract MimoFactory {
     /***********************************|
-  |       Events And Variables        |
-  |__________________________________*/
+    |       Events And Variables        |
+    |__________________________________*/
     event NewExchange(address indexed token, address indexed exchange);
 
     uint256 public tokenCount;
@@ -15,8 +15,8 @@ contract MimoFactory {
     mapping(uint256 => address) internal id_to_token;
 
     /***********************************|
-  |         Factory Functions         |
-  |__________________________________*/
+    |         Factory Functions         |
+    |__________________________________*/
 
     function createExchange(address token) public returns (address) {
         require(token != address(0));
@@ -33,8 +33,8 @@ contract MimoFactory {
     }
 
     /***********************************|
-  |         Getter Functions          |
-  |__________________________________*/
+    |         Getter Functions          |
+    |__________________________________*/
 
     function getExchange(address token) public view returns (address) {
         return token_to_exchange[token];
