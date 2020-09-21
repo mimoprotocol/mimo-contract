@@ -387,12 +387,12 @@ interface IMimoExchange {
   |__________________________________*/
 
     /**
-     * @notice Deposit IOTX && Tokens (token) at current ratio to mint IOS tokens.
-     * @dev min_liquidity does nothing when total IOS supply is 0.
-     * @param min_liquidity Minimum number of IOS sender will mint if total IOS supply is greater than 0.
-     * @param max_tokens Maximum number of tokens deposited. Deposits max amount if total IOS supply is 0.
+     * @notice Deposit IOTX && Tokens (token) at current ratio to mint MLP tokens.
+     * @dev min_liquidity does nothing when total MLP supply is 0.
+     * @param min_liquidity Minimum number of MLP sender will mint if total MLP supply is greater than 0.
+     * @param max_tokens Maximum number of tokens deposited. Deposits max amount if total MLP supply is 0.
      * @param deadline Time after which this transaction can no longer be executed.
-     * @return The amount of IOS minted.
+     * @return The amount of MLP minted.
      */
     function addLiquidity(
         uint256 min_liquidity,
@@ -401,8 +401,8 @@ interface IMimoExchange {
     ) external payable returns (uint256);
 
     /**
-     * @dev Burn IOS tokens to withdraw IOTX && Tokens at current ratio.
-     * @param amount Amount of IOS burned.
+     * @dev Burn MLP tokens to withdraw IOTX && Tokens at current ratio.
+     * @param amount Amount of MLP burned.
      * @param min_iotx Minimum IOTX withdrawn.
      * @param min_tokens Minimum Tokens withdrawn.
      * @param deadline Time after which this transaction can no longer be executed.
