@@ -6,8 +6,8 @@ import "./IMimoExchange.sol";
 
 contract MimoExchange is ERC20 {
     /***********************************|
-  |        Variables && Events        |
-  |__________________________________*/
+    |        Variables && Events        |
+    |__________________________________*/
 
     // Variables
     string public name; // name of the exchange
@@ -39,30 +39,30 @@ contract MimoExchange is ERC20 {
     );
 
     /***********************************|
-  |            Constsructor           |
-  |__________________________________*/
+    |            Constsructor           |
+    |__________________________________*/
 
-    /**
-     * @dev This function acts as a contract constructor which is not currently supported in contracts deployed
-     *      using create_with_code_of(). It is called once by the factory during contract creation.
-     */
-    function setup(address token_addr) public {
-        require(
-            address(factory) == address(0) &&
-                address(token) == address(0) &&
-                token_addr != address(0),
-            "INVALID_ADDRESS"
-        );
-        factory = IMimoFactory(msg.sender);
-        token = IERC20(token_addr);
-        name = string(abi.encodePacked("Mimo LP Token: ", token.symbol(), " IOTX"));
-        symbol = string(abi.encodePacked("MLP:", token.symbol(), "_IOTX"));
-        decimals = 18;
-    }
+        /**
+        * @dev This function acts as a contract constructor which is not currently supported in contracts deployed
+        *      using create_with_code_of(). It is called once by the factory during contract creation.
+        */
+        function setup(address token_addr) public {
+            require(
+                address(factory) == address(0) &&
+                    address(token) == address(0) &&
+                    token_addr != address(0),
+                "INVALID_ADDRESS"
+            );
+            factory = IMimoFactory(msg.sender);
+            token = IERC20(token_addr);
+            name = string(abi.encodePacked("mimo LP Token: ", token.symbol(), "-IOTX"));
+            symbol = string(abi.encodePacked("MLP:", token.symbol(), "-IOTX"));
+            decimals = 18;
+        }
 
     /***********************************|
-  |        Exchange Functions         |
-  |__________________________________*/
+    |        Exchange Functions         |
+    |__________________________________*/
 
     /**
      * @notice Convert IOTX to Tokens.
